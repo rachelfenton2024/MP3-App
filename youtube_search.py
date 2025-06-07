@@ -1,6 +1,6 @@
 import yt_dlp
 
-def search_youtube_top_results_yt_dlp(query, num_results=3):
+def search_youtube_top_results(query, num_results=3):
     ydl_opts = {
         'quiet': True,
         'extract_flat': True,  # Get metadata only, no download

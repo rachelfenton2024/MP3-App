@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MP3 Playlist App</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f3f4f6;
+    }
+    .screen {
+      display: none;
+      padding: 20px;
+    }
+    .active {
+      display: block;
+    }
+    .playlist-input {
+      text-align: center;
+      margin-top: 100px;
+    }
+    .playlist-input input {
+      width: 300px;
+      padding: 10px;
+      font-size: 16px;
+    }
+    .playlist-input button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-left: 10px;
+    }
+    .song-selection {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .song-title {
+      font-size: 20px;
+      margin: 20px 0 10px;
+      display: none
+    }
+    .video-options {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .video-option img {
+      width: 200px;
+      height: auto;
+      cursor: pointer;
+      border: 2px solid transparent;
+    }
+    .video-option img:hover {
+      border-color: #3b82f6;
+    }
+    .progress {
+      margin-top: 30px;
+      text-align: center;
+    }
+    .song-list {
+      margin-top: 10px;
+      list-style: none;
+      padding: 0;
+    }
+    .song-list li {
+      padding: 5px 0;
+    }
+    .checkmark {
+      color: green;
+      margin-right: 8px;
+    }
+    .video-title {
+    color: #111;             /* dark text for good contrast */
+    font-size: 14px;
+    margin-top: 6px;
+    max-width: 200px;       /* match thumbnail width */
+    white-space: wrap;    /* keep on one line */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+  }
+  .video-channel {
+  text-align: center;
+  font-size: 14px;
+  color: #555;
+  margin-top: 6px;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+  </style>
+</head>
+<body>
+
+  <!-- Start Screen -->
+  <div id="start-screen" class="screen active">
+    <div class="playlist-input">
+      <h2>Enter the URL for a Spotify Playlist</h2>
+      <input type="text" id="playlist-url" placeholder="e.g. https://open.spotify.com/playlist/1WfQcLAnOxp9RJSMnE07jj?si=430cd9433e0548d1">
+      <button onclick="submitPlaylistURL()">Submit</button>
+      <p id="error-message" style="color:red; display:none;">Invalid Playlist URL. Try again.</p>
+    </div>
+  </div>
+
+  <!-- Song Selection Screen -->
+  <div id="song-selection-screen" class="screen">
+    <div class="song-selection">
+      <div class="song-title" id="current-song-title">Song Title</div>
+      <div class="video-options" id="video-options">
+      </div>
+    </div>
+  </div>
+
+  <!-- Progress Screen -->
+  <div id="progress-screen" class="screen">
+    <div class="progress">
+      <h2>Downloading Songs</h2>
+      <p id="progress-count">0 of 0</p>
+      <ul class="song-list" id="song-status-list">
+        <!-- Status list will go here -->
+      </ul>
+    </div>
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>
